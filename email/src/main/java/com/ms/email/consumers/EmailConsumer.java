@@ -10,9 +10,9 @@ import com.ms.email.dto.EmailRecordDto;
 public class EmailConsumer {
 
 	
-	// metodo ouvinte que va consumir as mensagens desta fila
+	// metodo ouvinte que vai consumir as mensagens desta fila
 	@RabbitListener(queues = "${broker.queue.email.name}")
-	public void listenEmailQueue(@Payload EmailRecordDto emailRecordDto) { //Antes foi usada um String string para teste que foi enviada da fila
+	public void listenEmailQueue(@Payload EmailRecordDto emailRecordDto) { // String string){// Antes foi usada um String string para teste que foi enviada da fila
 		//System.out.println(string);
 		System.out.println(emailRecordDto.emailTo());
 	}

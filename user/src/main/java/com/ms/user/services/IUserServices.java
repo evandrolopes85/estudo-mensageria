@@ -1,8 +1,8 @@
 package com.ms.user.services;
 
-import com.ms.user.model.User;
+import com.ms.user.model.UserModel;
 
 public interface IUserServices {
 
-	public User save(User user);
+	public UserModel save(UserModel user);
 }

@@ -3,17 +3,15 @@ package com.ms.user.services;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.ms.user.model.User;
+import com.ms.user.model.UserModel;
 import com.ms.user.producer.UserProducer;
 import com.ms.user.repositories.UserRepository;
-
-
 
 @Service
 public class UserServiceImpl implements IUserServices {
 
-	private UserRepository userRepository;
-	private UserProducer userProducer;
+	final UserRepository userRepository;
+	final UserProducer userProducer;
 	
 	public UserServiceImpl(UserRepository userRepository,UserProducer userProducer) {
 		this.userRepository = userRepository;
@@ -22,10 +20,10 @@ public class UserServiceImpl implements IUserServices {
 
 	@Transactional
 	@Override
-	public User save(User user) {
+	public UserModel save(UserModel userModel) {
 		// TODO Auto-generated method stub
-		user = userRepository.save(user);
-		userProducer.publishMessageEmail(user);
-		return user;
+		userModel = userRepository.save(userModel);
+		userProducer.publishMessageEmail(userModel);
+		return userModel;
 	}
 }
